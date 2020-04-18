@@ -44,10 +44,12 @@ do it for us. Auth0 is a serverless solution that makes authentication easier.
 The Data Requester / Sender is responsible for retrieving and sending data to and from Canvas.
 The data that it sends includes:
 
-- Marking an assignment as complete / not complete
+- Marking an assignment as complete / not complete.
 - Marking an assignment as "doing". This is stored as arbitrary JSON in Canvas.
 
-The only data it retrieves includes:
+The  data it retrieves includes:
 
-- All assignments in the past week
-- Specific info on assignments
+- All assignments in the past week.
+- Specific info on assignments.
+
+Specific info is only requested when the user requests it (by clicking on an assignment).
