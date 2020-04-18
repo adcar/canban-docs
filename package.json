@@ -1,6 +1,6 @@
 {
-  "name": "gatsby-starter-markdown",
-  "description": "Gatsby markdown starter",
+  "name": "canban",
+  "description": "Canban docs",
   "version": "1.0.0",
   "author": "Luca(Wei) Chen <wei@cvluca.com>",
   "dependencies": {

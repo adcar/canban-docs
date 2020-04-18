@@ -2,16 +2,12 @@
   {
     "entry": "Docs",
     "name": "Docs",
-    "child_entries": ["Canban", "Guide"]
+    "child_entries": ["Canban"]
   },
   {
     "entry": "Canban",
     "name": "Canban",
-    "items": [
-      "docs/get-started/introduction",
-      "docs/get-started/quick-start",
-      "docs/canban/system-design"
-    ]
+    "items": ["docs/canban/requirements", "docs/canban/system-design"]
   },
   {
     "entry": "Guide",
