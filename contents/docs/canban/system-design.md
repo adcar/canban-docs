@@ -12,7 +12,16 @@ System Design should follow the [Requirements](/docs/canban/requirements).
 
 ## Architecture
 
-![Overall architecture of Canban](https://i.ibb.co/wQ4MH6s/System-Design-Canban.png)
+| ![Overall architecture of Canban](https://i.ibb.co/X3fHsLz/System-Design-Canban.png) |
+| :----------------------------------------------------------------------------------: |
+|                     _Figure 1 - Overall architecture of Canban_                      |
+
+Canban relies on a UI built with React to communicate with Canvas and Auth0. The React UI is served as a static web page
+from the hosting service [Zeit](https://zeit.co/). Zeit, Canvas, and [Auth0](https://auth0.com/) are hosted off-premises.
+The React UI uses the APIs of Canvas and Auth0 to authenticate with Canvas and provide the user with a filled Kanban board.
+The UI also makes requests to Canvas to update the user assignment's based on how the user moves cards around. Auth0 makes
+requests to Canvas to authenticate the user. On the UI side,the components are broken down. The [Data Requester / Sender](#data-requester--sender)
+plays a different rule and handles a different API than the [Authenticator](#authenticator).
 
 ## Components
 
@@ -47,7 +56,7 @@ The data that it sends includes:
 - Marking an assignment as complete / not complete.
 - Marking an assignment as "doing". This is stored as arbitrary JSON in Canvas.
 
-The  data it retrieves includes:
+The data it retrieves includes:
 
 - All assignments in the past week.
 - Specific info on assignments.
