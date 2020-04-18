@@ -46,7 +46,14 @@ authentication requests to Canvas.
 Canvas sends the user token which Auth0 then sends to React. If any of this fails the user is prompted with an error and
 must attempt to sign in again. The reason an intermediate server is necessary is because OAuth requires an application to have
 **private keys**. For security reasons we can't store those private keys on the client-side, thus we need to have a server
-do it for us. Auth0 is a serverless solution that makes authentication easier.
+do it for us. Auth0 is a serverless solution that makes authentication easier. The user token that is obtained after the
+OAuth2 flow is stored as a cookie on the user's machine. The cookie expires 1 minute before the user token expires. If no
+token is detected when the webapp is run (E.g. the token expired or the user has never authenticated), then the user must
+go through the authentication steps (again or for the first time). Figure 2 shows this authentication flow visually.
+
+| ![Canban authentication flow](https://i.ibb.co/KjPmPzQ/Auth-flow.png) |
+| :-------------------------------------------------------------------: |
+|                _Figure 2 - Canban authentication flow_                |
 
 ### Data Requester / Sender
 
