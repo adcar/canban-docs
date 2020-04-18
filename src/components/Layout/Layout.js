@@ -41,10 +41,8 @@ class Layout extends Component {
     `}
       render={data => {
         return (
-          <MediaQuery
-            maxWidth={1000}
-          >
-            {(matches) => (
+          <MediaQuery maxWidth={1000}>
+            {matches => (
               <>
                 <Helmet
                   title={data.site.siteMetadata.title}
@@ -66,53 +64,65 @@ class Layout extends Component {
                   >
                     <Row>
                       <Col>
-                        <Header siteTitle={data.site.siteMetadata.title} sidebarDocked={!matches}/>
+                        <Header
+                          siteTitle={data.site.siteMetadata.title}
+                          sidebarDocked={!matches}
+                        />
                       </Col>
-                      {matches && onPostPage && (!anchorHide || !sidebarHide) &&
-                        <Col> <ResponsiveTopBar/> </Col>
-                      }
+                      {matches && onPostPage && (!anchorHide || !sidebarHide) && (
+                        <Col>
+                          {' '}
+                          <ResponsiveTopBar />{' '}
+                        </Col>
+                      )}
                     </Row>
                   </AntdLayout.Header>
-                  {(!matches && onPostPage) ?
+                  {!matches && onPostPage ? (
                     <AntdLayout>
-                      {!sidebarHide && 
+                      {!sidebarHide && (
                         <AntdLayout.Sider>
-                          <ResponsiveSidebar/>
+                          <ResponsiveSidebar />
                         </AntdLayout.Sider>
-                      }
+                      )}
                       <AntdLayout.Content
                         style={{
-                          position: "absolute",
-                          left: "20%",
-                          right: "15%",
+                          position: 'absolute',
+                          left: '20%',
+                          right: '15%',
                         }}
                       >
-                        <Container sidebarDocked={!matches} onPostPage={onPostPage}>
+                        <Container
+                          sidebarDocked={!matches}
+                          onPostPage={onPostPage}
+                        >
                           {children}
                         </Container>
                       </AntdLayout.Content>
-                      {!anchorHide &&
-                      <AntdLayout.Sider>
-                        <ResponsiveAnchor />
-                      </AntdLayout.Sider>
-                      }
+                      {!anchorHide && (
+                        <AntdLayout.Sider>
+                          <ResponsiveAnchor />
+                        </AntdLayout.Sider>
+                      )}
                     </AntdLayout>
-                    :
+                  ) : (
                     <AntdLayout.Content
                       style={{
-                        position: "absolute",
+                        position: 'absolute',
                         left: 0,
                         right: 0,
                       }}
                     >
-                      <Container sidebarDocked={!matches} onPostPage={onPostPage}>
+                      <Container
+                        sidebarDocked={!matches}
+                        onPostPage={onPostPage}
+                      >
                         {children}
                       </Container>
                     </AntdLayout.Content>
-                  }
+                  )}
                 </AntdLayout>
-              </>)
-            }
+              </>
+            )}
           </MediaQuery>
         )
       }}
