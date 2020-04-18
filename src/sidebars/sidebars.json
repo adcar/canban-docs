@@ -2,17 +2,15 @@
   {
     "entry": "Docs",
     "name": "Docs",
-    "child_entries": [
-      "Get Started",
-      "Guide"
-    ]
+    "child_entries": ["Canban", "Guide"]
   },
   {
-    "entry": "Get Started",
-    "name": "Get Started",
+    "entry": "Canban",
+    "name": "Canban",
     "items": [
       "docs/get-started/introduction",
-      "docs/get-started/quick-start"
+      "docs/get-started/quick-start",
+      "docs/canban/system-design"
     ]
   },
   {
@@ -28,9 +26,6 @@
   {
     "entry": "Blog",
     "name": "Blog",
-    "items": [
-      "blog/first-blog",
-      "blog/second-blog"
-    ]
+    "items": ["blog/first-blog", "blog/second-blog"]
   }
 ]
