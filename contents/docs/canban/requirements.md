@@ -14,59 +14,59 @@ Canban is a web-based Kanban board that integrates with the Canvas Learning Mana
 
 - #### Authenticate with Canvas
 
-- Goal: Authenticate the user with Canvas so they can access their assignments from Canban.
-
-- User actions: Click "Sign in with Canvas" then click "Allow". If they aren't currently logged in with Canvas they will be taken to a login page first.
+    - Goal: Authenticate the user with Canvas so they can access their assignments from Canban.
+    
+    - User actions: Click "Sign in with Canvas" then click "Allow". If they aren't currently logged in with Canvas they will be taken to a login page first.
 
 - #### App actions: Store the resulting token for the OAuth flow.
 
-- Initialize the board
-
-- Goal: Initialize the board with the assignments in the correct places.
-
-- User actions: Open the webapp while authenticated
-
-- App actions: Sends out API requests for assignments that are not completed, and places those in the "To-Do" column. Sends out API requests for completed assignments for the week (no later than 7 days old) and puts those in the "Done" column. It also sends API requests for arbitrary JSON and puts those assignments in the "Doing" column.
+    - Initialize the board
+    
+    - Goal: Initialize the board with the assignments in the correct places.
+    
+    - User actions: Open the webapp while authenticated
+    
+    - App actions: Sends out API requests for assignments that are not completed, and places those in the "To-Do" column. Sends out API requests for completed assignments for the week (no later than 7 days old) and puts those in the "Done" column. It also sends API requests for arbitrary JSON and puts those assignments in the "Doing" column.
 
 - #### Move a card to "Done"
 
-- Goal: Move card to "Done" column and mark assignment as done.
-
-- User actions: Click and drag a card into the "Done" column.
-
-- App actions: An API request will automatically be sent out to mark the assignment as done.
+    - Goal: Move card to "Done" column and mark assignment as done.
+    
+    - User actions: Click and drag a card into the "Done" column.
+    
+    - App actions: An API request will automatically be sent out to mark the assignment as done.
 
 - #### Move a card to "Doing" 
 
-- Goal: Move a card to the default "Doing" column or any custom column that was previously created.
-
-- User actions: Drag and drop a card to that column.
-
-- App actions: An API request will automatically be sent out to the arbitrary JSON endpoint, adding the assignment ID to the respective column.
+    - Goal: Move a card to the default "Doing" column or any custom column that was previously created.
+    
+    - User actions: Drag and drop a card to that column.
+    
+    - App actions: An API request will automatically be sent out to the arbitrary JSON endpoint, adding the assignment ID to the respective column.
 
 - #### Move a card to "To-Do"
 
-- Goal: Move card to "To-Do" column and mark assignment as not completed.
-
-- User actions: Click and drag a card into the "To-Do" column.
-
-- App Actions:  An API request will automatically be sent out to mark the assignment as not done.
+    - Goal: Move card to "To-Do" column and mark assignment as not completed.
+    
+    - User actions: Click and drag a card into the "To-Do" column.
+    
+    - App Actions:  An API request will automatically be sent out to mark the assignment as not done.
 
 - #### Add a new card 
 
-- Goal: Add a new card to the To-Do column.
-
-- User actions: Click the "+" button at the bottom of the To-Do column. This brings up a dialog box where the user fills out the title and content of the card. Then press done.
-
-- App actions: Once the user presses done the card is added and an API request is sent out adding an item to Canvas's To-Do.
-
-- View an assignment in detail
-
-- Goal: View more details of a card. This will include non-truncated content of the card.
-
-- User actions: Click on the "info" button located on a card
-
-- App actions: Bring up a modal displaying information about an assignment.  This allows the user to read the full assignment description.
+    - Goal: Add a new card to the To-Do column.
+    
+    - User actions: Click the "+" button at the bottom of the To-Do column. This brings up a dialog box where the user fills out the title and content of the card. Then press done.
+    
+    - App actions: Once the user presses done the card is added and an API request is sent out adding an item to Canvas's To-Do.
+    
+    - View an assignment in detail
+    
+    - Goal: View more details of a card. This will include non-truncated content of the card.
+    
+    - User actions: Click on the "info" button located on a card
+    
+    - App actions: Bring up a modal displaying information about an assignment.  This allows the user to read the full assignment description.
 
 ## Non-functional requirements
 
