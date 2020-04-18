@@ -18,17 +18,17 @@ System Design should follow the [Requirements](/docs/canban/requirements).
 
 ### React UI
 
-The React UI is the central component of Canban. By default, a login page is displayed. 
-This login page uses the Authenticator to authenticate with Canvas and allow the user to see their assignments in a 
+The React UI is the central component of Canban. By default, a login page is displayed.
+This login page uses the Authenticator to authenticate with Canvas and allow the user to see their assignments in a
 Kanban board. This UI utilizes a library called [React-Kanban](https://github.com/lourenci/react-kanban) for the kanban board.
 Initially, when the board is loaded, the UI calls on the Data Requester to get all assignments for the past week. It then
 places those assignments in the correct columns. Each assignment is a card. When a user clicks on a card, they are brought
-to a modal displaying more info about that assignment. This relies on the Data Requester as another API request has to 
+to a modal displaying more info about that assignment. This relies on the Data Requester as another API request has to
 be made for this.
- 
- The UI detects changes in the board and will interface with Data Sender to initiate API requests with Canvas. For example,
- when the user moves a card into the "Done" column, the Data Sender knows to send an API request to Canvas to mark that
- assignment as done.
+
+The UI detects changes in the board and will interface with Data Sender to initiate API requests with Canvas. For example,
+when the user moves a card into the "Done" column, the Data Sender knows to send an API request to Canvas to mark that
+assignment as done.
 
 ### Authenticator
 
@@ -41,13 +41,13 @@ do it for us. Auth0 is a serverless solution that makes authentication easier.
 
 ### Data Requester / Sender
 
-The Data Requester / Sender is responsible for retrieving and sending data to and from Canvas. 
+The Data Requester / Sender is responsible for retrieving and sending data to and from Canvas.
 The data that it sends includes:
 
-* Marking an assignment as complete / not complete
-* Marking an assignment as "doing". This is stored as arbitrary JSON in Canvas.
+- Marking an assignment as complete / not complete
+- Marking an assignment as "doing". This is stored as arbitrary JSON in Canvas.
 
 The only data it retrieves includes:
- 
- * All assignments in the past week
- * Specific info on assignments 
+
+- All assignments in the past week
+- Specific info on assignments
