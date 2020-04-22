@@ -69,3 +69,12 @@ The data it retrieves includes:
 - Specific info on assignments.
 
 Specific info is only requested when the user requests it (by clicking on an assignment).
+
+## Technologies
+
+Canban uses the following technologies:
+
+- [React](https://reactjs.org/)
+- [React-kanban](https://github.com/lourenci/react-kanban)
+- [Material-UI](https://material-ui.com/) (For styling)
+- [JSS](https://cssinjs.org/?v=v10.1.1) (For styling)
