@@ -51,9 +51,9 @@ OAuth2 flow is stored as a cookie on the user's machine. The cookie expires 1 mi
 token is detected when the webapp is run (E.g. the token expired or the user has never authenticated), then the user must
 go through the authentication steps (again or for the first time). Figure 2 shows this authentication flow visually.
 
-| ![Canban authentication flow](https://i.ibb.co/KjPmPzQ/Auth-flow.png) |
-| :-------------------------------------------------------------------: |
-|                _Figure 2 - Canban authentication flow_                |
+| ![Canban authentication flow](https://i.ibb.co/51ZyZ4j/Canban-Auth.png) |
+| :---------------------------------------------------------------------: |
+|                 _Figure 2 - Canban authentication flow_                 |
 
 ### Data Requester / Sender
 
