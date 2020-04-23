@@ -41,8 +41,9 @@ assignment as done.
 
 ### Authenticator
 
-The Authenticator is responsible to authenticating the user via OAuth 2. It sends requests to [Auth0](https://auth0.com/)'s API which then
-authentication requests to Canvas.
+The Authenticator is responsible to authenticating the user via OAuth 2. It sends requests to [Auth0](https://auth0.com/)'s
+ API which then sends a authentication request to Canvas. The user is redirected at this stage and will be redirected to a 
+ portal login page if that is how that Canvas installation is set up.
 Canvas sends the user token which Auth0 then sends to React. If any of this fails the user is prompted with an error and
 must attempt to sign in again. The reason an intermediate server is necessary is because OAuth requires an application to have
 **private keys**. For security reasons we can't store those private keys on the client-side, thus we need to have a server
@@ -69,6 +70,9 @@ The data it retrieves includes:
 - Specific info on assignments.
 
 Specific info is only requested when the user requests it (by clicking on an assignment).
+
+The Canvas API only contains classes that the user is currently enrolled in. It will not be the responsibility of Canban
+to determine whether a student is enrolled in a class.
 
 ## Technologies
 
