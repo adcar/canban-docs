@@ -17,7 +17,7 @@ in the TypeScript is transpiled to JavaScript before being shipped to the browse
 #### Board
 
 The `Board` component utilizes a library called `react-kanban` to create a Kanban board. `Board` creates an `initialBoard`
-object which contains the column titles and empty arrays for the cards. This `initialBoard` is passed to `react-kanban`.
+object which contains the column titles and generates arrays for each column based on the `assignments` prop. This `initialBoard` is passed to `react-kanban`.
 The most important job `Board` has is sending the correct API requests based on the kanban board's changing state.
 `react-kanban` has a callback prop called `onCardDragEnd`. This callback is called whenever a card is finished being dragged.
 `Board` has a function called `onBoardChange`. This function is passed into the `onCardDragEnd` prop in `react-kanban`.
@@ -30,9 +30,15 @@ more detail in the [Utility Functions](#utility-functions) section.
 ##### Props
 
 - assignments: `IAssignment[]`
-  An array of IAssigment objects.
+  
+  An array of IAssignment objects. `Board` iterates through these to generate an `initialBoard` which gets passed to `react-kanban`.
+  
 - colors: `IColor[]`
+
+
 - doingIds: `number[]`
+
+
 
 #### Card
 
@@ -52,9 +58,7 @@ more detail in the [Utility Functions](#utility-functions) section.
 
 #### markAsDoing
 
-### Interfaces
-
-#### IAssignment
+### TypeScript Interfaces
 
 ```tsx
 interface IAssignment {
