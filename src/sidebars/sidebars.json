@@ -7,7 +7,11 @@
   {
     "entry": "Canban",
     "name": "Canban",
-    "items": ["docs/canban/requirements", "docs/canban/system-design"]
+    "items": [
+      "docs/canban/requirements",
+      "docs/canban/system-design",
+      "docs/canban/low-level"
+    ]
   },
   {
     "entry": "Guide",

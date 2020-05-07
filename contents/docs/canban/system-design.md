@@ -42,7 +42,7 @@ assignment as done.
 ### Authenticator
 
 The Authenticator is responsible to authenticating the user via OAuth 2. It sends requests to [Auth0](https://auth0.com/)'s
- API which then sends a authentication request to Canvas. The user is redirected at this stage and will be redirected to a 
+ API which then sends a authentication request to Canvas. The user is redirected at this stage and will be redirect11ed to a 
  portal login page if that is how that Canvas installation is set up.
 Canvas sends the user token which Auth0 then sends to React. If any of this fails the user is prompted with an error and
 must attempt to sign in again. The reason an intermediate server is necessary is because OAuth requires an application to have
