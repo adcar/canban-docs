@@ -8,9 +8,12 @@ showTitle: true
 
 ### Introduction
 
-Canban uses React. With React, Elements are broken up in to components to allow for re-use and provide an easy-to-follow
-composition model. Other than React components, Canban also contains utility functions written in TypeScript. Everything written
-in the TypeScript is transpiled to JavaScript before being shipped to the browser.
+Canban uses React and TypeScript. With React, Elements are broken up in to components to allow for re-use and provide an easy-to-follow
+composition model. Other than React components, Canban also contains various utility functions. Because Canban is written
+in TypeScript, we have the advantage of defining parameter types that utility functions accept and the data types that
+components accept in their props. These props may use interfaces which are defined in the [Interfaces](#interfaces) section.
+
+The TypeScript is transpiled to JavaScript before being shipped to the browser.
 
 ### React Components
 
@@ -26,7 +29,10 @@ a different column, an API request is fired. If the card is moved to the `To Do`
 utility function is called. If the card is moved to the `Doing`, [markAsDoing](#markasdoing) and [markAsNotDone](#markasnotdone)
 are called. If the card is moved to `Done`, [markAsDone](#markasdone) is called. These utlity functions are specified in
 more detail in the [Utility Functions](#utility-functions) section. `renderCard` is passed to `react-kanban` with the `Card`
-component. `react-kanban` takes this prop to render a custom card component rather than their default.
+component. `react-kanban` takes this prop to render a custom card component rather than their default. `Board` also
+maintains an array of assignment IDs that are in the `Doing` column. So, whenever an assignment is moved into the `Doing`
+column, the array of assignment IDs is updated to include that assignment. And vice-versa for when an assignment is moved
+out of `Doing`.
 
 ##### Props
 
@@ -185,7 +191,7 @@ Body (JSON):
 }
 ```
 
-NOTE: This is a bit of an oversimplification. Behind the scenes, markAsDone and markAsNotDone call the same function with
+NOTE: This is a bit of an oversimplification. Behind the scenes, `markAsDone` and `markAsNotDone` call the same function with
 slightly different parameters.
 
 ##### Parameters
@@ -200,13 +206,54 @@ slightly different parameters.
 
 #### markAsDoing
 
+`markAsDoing` works a bit differently than `markAsDone` or `markAsNotDone`. It takes in multiple IDs and marks them all
+as `Doing`. Canvas does not support any kind of "in progress" or "doing" indicator for assignments. However, Canvas accepts
+arbitrary JSON. Canban takes advantage of this by storing IDs of all assignments in the `Doing` column in this arbitrary
+JSON. Canvas takes in a namespace parameter called `ns` for their arbitrary JSON data. This is a unique string that should indicate
+the application. In this case, I used `dev.acardosi.canban`, since my personal domain is `acardosi.dev` and this application
+is called Canban.
+
+Calls `PUT https://vsc.instructure.com/api/v1/users/self/custom_data`
+
+Body:
+
+```json
+{
+       "ns": "dev.acardosi.canban",
+       "data": {
+         "doing": ${JSON.stringify(ids)}
+       }
+}
+```
+
 ##### Parameters
+
+- ids: number[]
+  Array of IDs that are currently in the "doing" column. Any ids that are not in this array will not be in the `Doing`
+  column.
 
 #### getCourse
 
+A simple utility function to return assignment details based on the assignment ID and the course ID. Returns exactly what
+the Canvas API returns.
+
+Calls `GET https://vsc.instructure.com/api/v1/courses/${courseId}/assignments/${assignmentId}`
+
+Returns the JSON response (containing assignment details) that the API sends.
+
 ##### Parameters
 
-### TypeScript Interfaces
+- course_id: `number`
+
+  The course ID.
+
+- assignment_id: `number`
+
+  The assignment ID.
+
+### Interfaces
+
+These interfaces are used for props throughout Canban.
 
 ```tsx
 interface IAssignment {
