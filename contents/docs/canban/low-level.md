@@ -129,7 +129,7 @@ columns. Also, this section uses `${}` to denote a variable (or expression) is i
 
 #### markAsNotDone
 
-If override_id is not null, the override `marked_complete` is updated to be not done (`false`). If override_id is null, this
+If `override_id` is not null, the override `marked_complete` is updated to be not done (`false`). If `override_id` is null, this
 function first creates an override then updates the `marked_complete` to be not done (`false`).
 
 Calls `PUT https://vsc.instructure.com/api/v1/planner/overrides/${override_id}`
@@ -166,7 +166,7 @@ Body (JSON):
 
 #### markAsDone
 
-If override_id is not null, the override `marked_complete` is updated to be done (`true`). If override_id is null, this
+If `override_id` is not null, the override `marked_complete` is updated to be done (`true`). If `override_id` is null, this
 function first creates an override then updates the `marked_complete` to be done (`true`).
 
 Calls `PUT https://vsc.instructure.com/api/v1/planner/overrides/${override_id}`
