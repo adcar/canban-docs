@@ -89,7 +89,9 @@ and the assignment description.
   ID of the assignment.
 
 - courseId: `number`
+
   ID of the course which contains the assignment.
+
 - title: `string`
 
   Assignment title.
@@ -99,19 +101,110 @@ and the assignment description.
   The date when the assignment is due. Formatted `Month D`. Can also be `Today` or `Tomorrow`.
 
 - dueTime: `string`
+
   The time the when the assignment is due. Formatted `H:MM AM/PM`
 
-#### Navbar
+#### Appbar
+
+A simple app bar at the top of the screen that displays "Canban" and a toggle button for dark-mode or light-mode.
 
 ##### Props
 
+- onToggleTheme: `ICallback`
+
+  Callback that is fired when the dark-mode / light-mode button is pressed.
+
 ### Utility Functions
+
+Before diving in to the utility functions, it's important to understand a concept in Canvas: overrides. An override
+essentially means the status is overwritten by user actions. For example, something can be marked as done even though
+the assignment isn't submitted. Canban utilizes these overrides by creating one whenever a card is moved into certain
+columns. Also, this section uses `${}` to denote a variable (or expression) is inside of a string.
 
 #### markAsNotDone
 
+If override_id is not null, the override `marked_complete` is updated to be not done (`false`). If override_id is null, this
+function first creates an override then updates the `marked_complete` to be not done (`false`).
+
+Calls `PUT https://vsc.instructure.com/api/v1/planner/overrides/${override_id}`
+
+Body (JSON):
+
+```json
+{ "marked_complete": "false" }
+```
+
+If override_id is null it will instead call:
+
+`POST https://vsc.instructure.com/api/v1/planner/overrides`
+
+Body (JSON):
+
+```json
+{
+        "plannable_id": ${id},
+        "marked_complete": "false",
+        "plannable_type": "assignemnt"
+}
+```
+
+##### Parameters
+
+- override_id: `number | null`
+
+  override ID of an assignment.
+
+- id: `number`
+
+  ID of an assignment.
+
+#### markAsDone
+
+If override_id is not null, the override `marked_complete` is updated to be done (`true`). If override_id is null, this
+function first creates an override then updates the `marked_complete` to be done (`true`).
+
+Calls `PUT https://vsc.instructure.com/api/v1/planner/overrides/${override_id}`
+
+Body (JSON):
+
+```json
+{ "marked_complete": "true" }
+```
+
+If override_id is null it will instead call:
+
+`POST https://vsc.instructure.com/api/v1/planner/overrides`
+
+Body (JSON):
+
+```json
+{
+        "plannable_id": ${id},
+        "marked_complete": "true",
+        "plannable_type": "assignemnt"
+}
+```
+
+NOTE: This is a bit of an oversimplification. Behind the scenes, markAsDone and markAsNotDone call the same function with
+slightly different parameters.
+
+##### Parameters
+
+- override_id: `number | null`
+
+  override ID of an assignment.
+
+- id: `number`
+
+  ID of an assignment.
+
 #### markAsDoing
 
+##### Parameters
+
 #### getCourse
+
+##### Parameters
 
 ### TypeScript Interfaces
 
@@ -126,11 +219,15 @@ interface IAssignment {
 }
 
 interface IColors {
-  custom_colors: CustomColor[]
+  custom_colors: ICustomColor[]
 }
 
-interface CustomColor {
+interface ICustomColor {
   [name: string]: string
+}
+
+interface ICallback {
+  (): void
 }
 ```
 
