@@ -228,7 +228,8 @@ Body:
 
 ##### Parameters
 
-- ids: number[]
+- ids: `number[]`
+
   Array of IDs that are currently in the "doing" column. Any ids that are not in this array will not be in the `Doing`
   column.
 
