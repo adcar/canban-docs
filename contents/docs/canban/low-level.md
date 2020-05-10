@@ -279,6 +279,62 @@ interface ICallback {
 }
 ```
 
-### Generated HTML Sample
+### Generated HTML sample (simplified)
+
+```html
+<head>
+  <title>Canban</title>
+</head>
+<body>
+  <header />
+  <div id="board-droppable">
+    <!-- To Do Column -->
+    <div id="column-draggable-1">
+      <div class="card">
+        <p>chase game</p>
+      </div>
+      <div class="card">
+        <p>Final Project</p>
+      </div>
+      <div class="card">
+        <p>Final Project Presentation</p>
+      </div>
+    </div>
+    <!-- Doing Column -->
+    <div id="column-draggable-2">
+      <div class="card">
+        <p>Final Project Presentation</p>
+      </div>
+    </div>
+    <!-- Done Column -->
+    <div id="column-draggable-3"></div>
+  </div>
+</body>
+```
 
 ## UI/UX design
+
+### Metaphors
+
+- Kanban board
+
+Kanban boards were originally physical white boards with columns that had sticky notes (aka cards) that would
+be move manually moved from column to column. Canban refers to the digital equivalent. See Figure 1 (below) for an example
+of a physical kanban board.
+
+| ![Physical kanban board](http://www.patrick-wied.at/blog/wp-content/uploads/2014/04/1gTqeqfmxq0P-bEGBdMLmJA.jpeg) |
+| :---------------------------------------------------------------------------------------------------------------: |
+|                            _Figure 1 - Physical kanban board (photo by Patrick Wied)_                             |
+|                                                                                                                   |
+
+- Card
+
+Originally a sticky note or some kind of note card with tape. Canban refers to the digital equivalent.
+
+### UI Flow
+
+| ![Canban UI flow](https://i.ibb.co/VY2DGpg/canban-ui.png) |
+| :-------------------------------------------------------: |
+|                _Figure 2 - Canban UI flow_                |
+|                                                           |
+| Full sized image: https://i.ibb.co/VY2DGpg/canban-ui.png  |
