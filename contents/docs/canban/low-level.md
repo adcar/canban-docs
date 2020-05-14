@@ -19,7 +19,7 @@ The TypeScript is transpiled to JavaScript before being shipped to the browser.
 
 #### App
 
-This is hit of the project. It will decide whether or not to render `Board` based on whether the
+This is the root of the project. It will decide whether or not to render `Board` based on whether the
 user is authenticated or not. Will call [authenticate](#authenticate) to gain an access token which is used for every API
 request.
 
