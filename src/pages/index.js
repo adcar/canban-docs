@@ -21,7 +21,7 @@ const IndexPage = () => {
           </p>
           <h2>Kanban board with React integration</h2>
           <br />
-          <Link to="/docs/canban/system-design">
+          <Link to="/docs/canban/requirements">
             <Button
               type="primary"
               size="large"
