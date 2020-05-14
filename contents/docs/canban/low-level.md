@@ -17,6 +17,12 @@ The TypeScript is transpiled to JavaScript before being shipped to the browser.
 
 ### React Components
 
+#### App
+
+This is hit of the project. It will decide whether or not to render `Board` based on whether the
+user is authenticated or not. Will call [authenticate](#authenticate) to gain an access token which is used for every API
+request.
+
 #### Board
 
 The `Board` component utilizes a library called `react-kanban` to create a Kanban board. `Board` creates an `initialBoard`
@@ -126,6 +132,8 @@ Before diving in to the utility functions, it's important to understand a concep
 essentially means the status is overwritten by user actions. For example, something can be marked as done even though
 the assignment isn't submitted. Canban utilizes these overrides by creating one whenever a card is moved into certain
 columns. Also, this section uses `${}` to denote a variable (or expression) is inside of a string.
+
+Note: All the API requests contain a Bearer with the access token. This has been left out below since it would be very repetitive.
 
 #### markAsNotDone
 
@@ -251,6 +259,19 @@ Returns the JSON response (containing assignment details) that the API sends.
 - assignment_id: `number`
 
   The assignment ID.
+
+#### authenticate
+
+If the URL contains an access token, this function returns that access token.
+
+If there is no access token in the url, the user is redirected to an Auth0 URL, where the user can authenticate.
+Auth0 redirects the user back to Canban (with an access token) via a callback. This function will then return that access token.
+
+##### Parameters
+
+- url: `string`
+
+Current window URL.
 
 ### Interfaces
 
